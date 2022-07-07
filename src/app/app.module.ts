@@ -13,6 +13,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { courseReducer } from './state/course/course.reducres';
 import { EffectsModule } from '@ngrx/effects';
 import { CourseEffects } from './state/course/course.effets';
+import { professorReducer } from './state/professor/professor.reducers';
+import { ProfessorEffects } from './state/professor/professor.effects';
+import { studentReducer } from './state/student/student.reducers';
+import { StudentEffects } from './state/student/student.effects';
 
 @NgModule({
   declarations: [
@@ -26,10 +30,14 @@ import { CourseEffects } from './state/course/course.effets';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({
-      course : courseReducer
+      course : courseReducer,
+      professor : professorReducer,
+      student : studentReducer
     }),
     EffectsModule.forRoot([
-      CourseEffects
+      CourseEffects,
+      ProfessorEffects,
+      StudentEffects
     ]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
